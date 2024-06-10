@@ -1,0 +1,648 @@
+;Zachary Pestrikov
+;Balance Game Pseudocode
+;EE/CS 10b
+;6/8/2024
+;
+;______________________________________________________________________________
+;
+;Procedure: Init()
+;Description: This Procedure initializes the buttons, display, timers, sound,
+;                and IMU for the balance game.
+;Operational Description: This procedure calls all initialization functions for
+;                            all inputs, outputs, and timers. It is also the 
+;                            origin of the program and runs the main loop.
+;Arguments:      None
+;Return Values:  None
+;Shared Variables: None
+;Local Variables: None
+;Input:          None
+;Output:         None
+;Error Handling: None
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  None
+;Critical Code:  None. Interrupts cannot happen yet.
+;Constants:      TBD
+;Registers Changed: TBD
+;
+;Init():
+;    InitButtons()
+;    InitDisplay()
+;    InitTimer0()
+;    InitSoundIMU()
+;    InitSettings()
+;    while (true):
+;        WaitStart()
+;    
+;_______________________________________________________________________________
+;    
+;Procedure: InitSettings()
+;Description: This Procedure initializes the balance game settings, which include
+;                the gravity, size, and disappearanceRate. It also initializes
+;                randomMode to false and the game high score to zero.
+;Operational Description: This procedure stores all the settings, highscore,
+;                            and randomMode in shared variables. 
+;Arguments:      None
+;Return Values:  None
+;Shared Variables: gravity - the gravity experienced by the ball - initialized
+;                    size - the size of the ball - initialized
+;                    disapearanceRate - the rate at which the ball disappears
+;                        from the screen, 0 => no disappearing - initialized to 0
+;                    highscore - the high score of the user based on the settings
+;                        - initialized to 0
+;                    randomMode - a special mode where all the settings are 
+;                        chosen at random - initialized to off
+;                    music - whether the user wants music to play during the game
+;                    disapearanceTime - a random amount of time for the ball
+;                            to disappear for
+;Local Variables: None
+;Input:          None
+;Output:         None
+;Error Handling: None
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  None
+;Critical Code:  None. Interrupts cannot happen yet.
+;Constants:      GRAVITY_INIT - the default gravity
+;                SIZE_INIT   - the default size
+;                FALSE - Value that represents false in the program
+;                TRUE - Value that represents true in the program
+;                MAX_DISAPPEARANCE_TIME - the maximum amount of time the ball can
+;                        disappear for
+;Registers Changed: TBD
+;
+;InitSettings():
+;    gravity = GRAVITY_INIT
+;    size = SIZE_INIT
+;    disapearanceRate = 0
+;    highscore = 0
+;    music = TRUE
+;    randomMode = FALSE
+;    disappearanceTime = Random() % MAX_DISAPPEARANCE_TIME
+;    settings = [highscore, gravity, size, randomMode,  music, dissapearanceRate]
+;    return
+;    
+;______________________________________________________________________________
+;    
+;Procedure: WaitStart()
+;Description: This Procedure is run while the game is not being played. It sweeps
+;                up and down the leds while adjusting the settings based on 
+;                user input.
+;Operational Description: This procedure checks each of the buttonPress functions
+;                            to determine what to do, and changes the settings
+;                            based on the rotary encoder. It then displays the 
+;                            value of the setting. The user can go to the next
+;                            setting my clicking the mode button. Rotating the
+;                            rotary encoder forward will increase the setting
+;                            by a certain step size, and the setting will be 
+;                            decreased by rotating the rotary encoder backwards.
+;                            Pressing the rotary encoder will return the setting
+;                            to its default value. Once the user presses the
+;                            start button, the game will begin.
+;Arguments:      None
+;Return Values:  None
+;Shared Variables: gravity - the gravity experienced by the ball - initialized
+;                    size - the size of the ball - initialized
+;                    disapearanceRate - the rate at which the ball disappears
+;                        from the screen, 0 => no disappearing - initialized to 0
+;                    highscore - the high score of the user based on the settings
+;                        - initialized to 0
+;                    randomMode - a special mode where all the settings are 
+;                        chosen at random - initialized to off
+;                    music - whether the user wants music to play during the game
+;Local Variables: led - the led to display at a given time
+;Input:          Start Button
+;                Mode Button
+;                Rotary Encoder
+;                Rotary Button
+;Output:         7-segment display
+;                70 unit LED bar
+;Error Handling: If the user attempts to surpass the limits of the settings, the
+;                setting will hold its limit value.
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  None
+;Critical Code:  None
+;Constants:      GRAVITY_INIT - the default gravity
+;                SIZE_INIT   - the default size
+;                FALSE - Value that represents false in the program
+;                WaitStartLEDs - table of led pattern to play while waiting for
+;                        the start button to be pressed
+;                gravityRangeHigh/gravityRangeLow - limits of the gravity setting
+;                sizeRangeHigh/sizeRangeLow - limits of the size setting
+;                dissapearanceRateRangeHigh/dissapearanceRateRangeLow - limits of
+;                    the disapearanceRate setting
+;Registers Changed: TBD
+;    
+;    
+;WaitStart():
+;    ClearDisplay()
+;    led = 0
+;    DisplayGameLED(WaitStartLEDs[led], On)
+;    setting = gravity
+;    while (!StartPress()):
+;        if (ModePress()):
+;            DisplayGameLED(ModeButton, On)
+;            if (setting == dissapearanceRate):
+;                setting = highscore
+;            else:
+;                setting = settings[setting + 1]
+;            DisplayHex(setting)
+;        if (RotCCW):
+;            if (setting == gravity):
+;                if (gravity != gravityRangeLow):
+;                    gravity -= GRAVITY
+;                DisplayHex(gravity)
+;            elif (setting == size):
+;                if (size != sizeRangeLow):
+;                    size--
+;                DisplayHex(size)
+;            elif (setting == dissapearanceRate):
+;                if (dissapearanceRate != dissapearanceRateRangeLow):
+;                    dissapearanceRate--
+;                DisplayHex(dissapearanceRate)
+;            elif (setting == randomMode):
+;                randomMode = False
+;                displayHex('T')
+;            elif (setting == music):
+;                music = True
+;                displayHex('T')
+;        if (RotCW):
+;            if (setting == gravity):
+;                if (gravity != gravityRangeHigh):
+;                    gravity ++
+;                DisplayHex(gravity)
+;            elif (setting == size):
+;                if (size != sizeRangeHigh):
+;                    size++
+;                DisplayHex(size)
+;            elif (setting == dissapearanceRate):
+;                if (dissapearanceRate != dissapearanceRateRangeHigh):
+;                    dissapearanceRate++
+;                DisplayHex(dissapearanceRate)
+;            elif (setting == randomMode):
+;                randomMode = False
+;                displayHex('F')
+;            elif (setting == music):
+;                music = False
+;                displayHex('F')
+;        if (RotPressed):
+;            if (setting == gravity):
+;                gravity = GRAVITY_INIT
+;                DisplayHex(gravity)
+;            elif (setting == size):
+;                size = SIZE_INIT
+;                DisplayHex(size)
+;            elif (setting == dissapearanceRate):
+;                disapearanceRate = 0
+;                DisplayHex(dissapearanceRate)
+;            elif (setting == randomMode):
+;                randomMode = False
+;                displayHex('F')
+;            elif (setting == music):
+;                music = True
+;                displayHex('T')
+;                
+;        Delay(0.2s)
+;        DisplayGameLED(WaitStartLEDs[led], Off)
+;        
+;        led++
+;        if (led > WaitStartLEDsSize):
+;            led = 0
+;        DisplayGameLED(WaitStartLEDs[led], On)
+;        DisplayGameLED(ModeButton, Off)
+;    if (randomMode):
+;        disappearanceRate = 0
+;    ClearDisplay()
+;    DisplayGameLED(StartButton, On)
+;    PlayGame()
+;    return
+;
+;______________________________________________________________________________
+;
+;Procedure: PlayGame()
+;Description: This Procedure is run to begin the game. 
+;Operational Description: This procedure plays the music and 
+;                sets the ball's location in the middle of the board. It also 
+;                clears the display.
+;Arguments:      None
+;Return Values:  None
+;Shared Variables: SoundToPlay - the tune for the speaker to play - set to the
+;                        game play music if music is turned on.
+;                    disapearanceRate - the rate at which the ball disappears
+;                        from the screen, 0 => no disappearing - unchanged
+;                    music - whether the user wants music to play during the game
+;                    ballLocation - the center of the ball - initialized to the
+;                        middle of the board
+;                    ballLeft - the leftmost LED of the ball - initialized based
+;                        on the size of the ball
+;                    ballRight - the rightmost LED of the ball - initialized based
+;                        on the size of the ball
+;                    winState - the user's progress in winning the game - 
+;                        initialized to 0
+;                    timeLeft - the time the user has left in the game before
+;                        they lose - initialized
+;                    disappearance - the time until the next time the ball 
+;                        disappears - initialized to the disapearanceRate
+;                    size - the size of the ball chosen by the user - unchanged
+;Local Variables: None
+;Input:          None
+;Output:         7-segment display
+;                70 unit LED bar
+;Error Handling: None
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  None
+;Critical Code:  None
+;Constants:      GAMEPLAYSOUND - the sound to play during the game
+;                BOARD_MIDDLE - the middle LED on the game board
+;                GAMETIME - the maximum time the user has to play the game before
+;                    they lose.
+;Registers Changed: TBD
+;    
+;PlayGame():
+;    Delay(0.5s)
+;    if (music):
+;        SoundToPlay = GAMEPLAYSOUND
+;    else:
+;        SoundToPlay = NO_SOUND
+;    ballLocation = BOARD_MIDDLE + (settings[size] - 1) / 2
+;    ballLeft = ballLocation - (settings[size] - 1) / 2
+;    ballRight = ballLocation + (settings[size] - 1) / 2
+;    winState = 0
+;    ClearDisplay()
+;    timeLeft = GAMETIME
+;    disappearance = disappearanceRate
+;    while (!StartPress() and TimeLeft):
+;        GameLoop()
+;    if (timeLeft == 0):
+;        GameLose()
+;    return
+;        
+;______________________________________________________________________________    
+;
+;Procedure: GameLoop()
+;Description: This Procedure is the main loop for the game. 
+;Operational Description: This procedure moves the ball across the board and 
+;                            determines whether the user has won or lost.
+;Arguments:      None
+;Return Values:  None
+;Shared Variables: 
+;                    disapearanceRate - the rate at which the ball disappears
+;                        from the screen, 0 => no disappearing - unchanged
+;                    ballLocation - the center of the ball - initialized to the
+;                        middle of the board
+;                    ballLeft - the leftmost LED of the ball - initialized based
+;                        on the size of the ball
+;                    ballRight - the rightmost LED of the ball - initialized based
+;                        on the size of the ball
+;                    winState - the user's progress in winning the game - 
+;                        initialized to 0
+;                    timeLeftSeconds - the time the user has left in the game 
+;                        in seconds
+;                    randomMode - the setting to choose whether to play the game
+;                        in random mode
+;                    disappearance - the time left until the next disappearance
+;                    prevBall - the previous location of the ball
+;                    
+;Local Variables: yAccel - the acceleration in the y direction of the board
+;                zAccel - the acceleration in the z direction of the board
+;                deltaBall - the change in the ball's position
+;Input:          IMU
+;Output:         7-segment display
+;                70 unit LED bar
+;Error Handling: If the ball rolls of the edge of the board or the user flips the 
+;                board upside down, then the user loses.
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  None
+;Critical Code:  None
+;Constants:      MAXZ_ACCEL - the maximum z acceleration that denotes that the 
+;                    board has flipped upside down
+;                sizeRangeHigh - the maximum size of the ball
+;                gravityRangeHigh - the maximum strength of gravity
+;                LEDsMIDDLE - the middle led of the game board
+;                LEDsLEFT - the leftmost led of the game board
+;                LEDsRIGHT - the rightmost led of the game board
+;
+;GameLoop():
+;    yAccel = GetAccelY()
+;    zAccel = GetAccelz()
+;    if (zAccel < MAXZ_ACCEL):
+;        GameLose()
+;    else:
+;        if (randomMode):
+;            settings[size] = Random() % (sizeRangeHigh + 1)
+;            settings[gravity] = Random() % (gravityRangeHigh + 1)
+;        deltaBall = GetDeltaBall(yAccel)
+;        prevBall = [ballLeft..ballRight]
+;        ballLocation += deltaBall
+;        ballLeft += deltaBall
+;        ballRight += deltaBall
+;        if (ballLocation > 70 or ballLocation < 0):
+;            GameLose()
+;        else:
+;            DisplayBall(disappearance, prevBall)
+;            if (winState == 0):
+;                if (ballLeft == LEDsLEFT):
+;                    winState++
+;                    side = LEDsLEFT
+;                    BlinkDisplay('1')
+;                elif (ballRight == LEDsRIGHT):
+;                    winState++
+;                    side = LEDsRight
+;                    BlinkDisplay('1')
+;            elif (winState == 1):
+;                if (ballLeft == side or ballRight == side):
+;                    winState++
+;                    BlinkDisplay('2')
+;            else:
+;                if (ballLocation == LEDsMIDDLE):
+;                    GameWin()
+;    displayHex(TimeLeftSeconds)
+;    return
+;                
+;______________________________________________________________________________     
+;        
+;Procedure: DisplayBall()
+;Description: This Procedure displays the ball on the LED bar. 
+;Operational Description: This procedure displays all LEDs from ballLeft to
+;                            ballRight. It does not display the ball if the 
+;                            disappearance variable has been decremented to 0.
+;Arguments:      None
+;Return Values:  None
+;Shared Variables: 
+;                    disapearanceRate - the rate at which the ball disappears
+;                        from the screen, 0 => no disappearing - unchanged
+;                    ballLocation - the center of the ball - initialized to the
+;                        middle of the board
+;                    ballLeft - the leftmost LED of the ball - initialized based
+;                        on the size of the ball
+;                    ballRight - the rightmost LED of the ball - initialized based
+;                        on the size of the ball
+;                    disappearance - the time left until the next disappearance
+;                    prevBall - the previous location of the ball
+;                    disapearanceTime - a random amount of time for the ball
+;                            to disappear for
+;                    
+;Local Variables: i - used in for loops
+;Input:          None 
+;Output:         7-segment display
+;                70 unit LED bar
+;Error Handling: None
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  None
+;Critical Code:  None
+;Constants:      MAX_DISAPPEARANCE_TIME - the maximum amount of time that the 
+;                    ball can disappear for
+;        
+;DisplayBall(disappearance, prevBall[]):
+;    for i in prevBall:
+;        DisplayGameLED(i, Off)
+;    if (disappearance > 0 && disappearanceTime <= 0) or disappearanceRate == 0:
+;        for (int i = ballLeft; i < ballRight + 1; i++):
+;            DisplayGameLED(i, On)
+;    else if (disappearance <= 0 and disappearanceTime <= 0):
+;        disappearance = disappearanceRate
+;        disappearanceTime = Random() % MAX_DISAPPEARANCE_TIME
+;    return
+;        
+;______________________________________________________________________________
+;
+;Procedure: GameLose()
+;Description: This Procedure is called when the user loses, and it ends the game. 
+;Operational Description: This procedure plays the LOSESOUND, and displays       
+;                            'LOSE' on the display.
+;Arguments:      None
+;Return Values:  None
+;Shared Variables: 
+;                    SoundToPlay - the tune for the speaker to play - set to the
+;                        losing sound
+;                    TimeLeft - the time the user has left in the game - set to 0
+;                        to end the game
+;                    
+;Local Variables: None
+;Input:          None 
+;Output:         Speaker, 7-seg Display, game LEDs
+;Error Handling: None
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  None
+;Critical Code:  None
+;Constants:      LOSESOUND - the sound to play when the user loses   
+;                NO_SOUND - tells the speaker to play no sound
+;                BLINK_TIME - the amount of time to blink the display
+;        
+;
+;GameLose():
+;    ClearDisplay()
+;    SoundToPlay = LOSESOUND
+;    BlinkDisplay('LOSE', BLINKTIME)
+;    TimeLeft = 0;
+;    SoundToPlay = NO_SOUND
+;    return
+;    
+;______________________________________________________________________________
+;    
+;Procedure: BlinkDisplay(Hex, time)
+;Description: This Procedure blinks the display for a certain amount of time. 
+;Operational Description: This procedure blinks the display by showing the 
+;                            display for half a second and then displaying
+;                            nothing for half a second
+;Arguments:      Hex - the hexadecimal to display to the 7-seg display
+;                time - the amount of time to blink for
+;Return Values:  None
+;Shared Variables: None            
+;Local Variables: None
+;Input:          None 
+;Output:         7-seg Display, game LEDs
+;Error Handling: None
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  None
+;Critical Code:  None
+;Constants:      None
+;    
+;BlinkDisplay(Hex, time):
+;    while (time > 0):
+;        displayHex(Hex)
+;        Delay(0.5s)
+;        ClearDisplay()
+;        Delay(0.5s)
+;        time--
+;    displayHex(Hex)
+;    return
+;        
+;______________________________________________________________________________
+;
+;Procedure: GetDeltaBall(yAccel)
+;Description: This Procedure determines the change in the position of the ball. 
+;Operational Description: This procedure looks the yAccel up in a dictionary
+;                            that maps yAccels to their corresponding deltas.
+;Arguments:      yAccel - the acceleration of the ball in the y direction
+;Return Values:  delta - the change in leds of the position of the ball
+;Shared Variables: gravity - the strength of gravity            
+;Local Variables: i - used in for loops
+;                    sign - the sign of yAccel
+;Input:          None 
+;Output:         None
+;Error Handling: None
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  None
+;Critical Code:  None
+;Constants:      DELTA_TABLE - the table that maps yAccel to deltas
+;                DELTA_TABLE_LENGTH - the length of DELTA_TABLE
+;
+;GetDeltaBall(yAccel):
+;    sign = yAccel[15]
+;    for (int i = 0; i < DELTA_TABLE_LENGTH; i+=2):
+;        if !(DELTA_TABLE[i] > yAccel[14..0]):
+;            delta = DELTA_TABLE[i+1] * gravity
+;    if (sign == 1):
+;        delta *= -1
+;    return delta
+;    
+;______________________________________________________________________________
+;    
+;Procedure: GameWin()
+;Description: This Procedure is called when the user wins. 
+;Operational Description: This procedure displays the score and ends the game.
+;                            It also plays any sounds and determines whether
+;                                        a new high score has been achieved.
+;Arguments:      None
+;Return Values:  None
+;Shared Variables: highscore - the user's high score
+;                    SoundToPlay - the tune for the speaker to play
+;                    timeLeft - the time the user has left - set to 0 to end the 
+;                        game
+;Local Variables: score - the user's score weighed by the settings
+;Input:          None 
+;Output:         7-seg display, game LED bar, speaker
+;Error Handling: None
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  None
+;Critical Code:  None
+;Constants:      HIGHSCORE_SOUND - the tune to play when the user achieves
+;                    a high score
+;                VICTORY_SOUND - the tune to play when the user wins
+;                BLINKTIME - the amount of time to blink the display for
+;                NO_SOUND - signals to the speaker not to play anything
+;    
+;GameWin():
+;    ClearDisplay()
+;    score = ComputeScore()
+;    if (score > settings[highscore]):
+;        settings = score
+;        SoundToPlay = HIGHSCORE_SOUND
+;    else:
+;        SoundToPlay = VICTORY_SOUND
+;    BlinkDisplay(score, BLINKTIME)
+;    SoundToPlay = NO_SOUND
+;    timeLeft = 0
+;    return
+;
+;______________________________________________________________________________
+;
+;Procedure: ComputeScore()
+;Description: This Procedure computes and returns the user's score
+;Operational Description: This Procedure computes the user's score based on the 
+;                time and settings.
+;Arguments:      None
+;Return Values:  score - the user's score
+;Shared Variables: size/gravity/disapearanceRate/randonMode - the settings 
+;                    selected by the user
+;                    timeLeft - the time the user has left - set to 0 to end the 
+;                        game
+;Local Variables: None
+;Input:          None 
+;Output:         7-seg display, game LED bar, speaker
+;Error Handling: None
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  None
+;Critical Code:  None
+;Constants:      TIME_WEIGHT, RANDOM_WEIGHT, SIZE_WEIGHT, GRAVITY_WEIGHT,
+;                DISAPPEARANCE_WEIGHT - the weights to weight each of the 
+;                    settings and time by
+;                
+;ComputeScore():
+;    if (settings[randomMode]):
+;        score = timeLeft * TIME_WEIGHT * RANDOM_WEIGHT
+;    score = settings[size] * SIZE_WEIGHT 
+;            + settings[gravity] * GRAVITY_WEIGHT
+;            + settings[disappearanceRate] * DISAPPEARANCE_WEIGHT
+;            + timeLeft * TIME_WEIGHT
+;    return score
+;
+;______________________________________________________________________________
+;
+;Procedure: Random()
+;Description: This Procedure returns a random 8 bit value
+;Operational Description: This Procedure uses Fibonacci LFSR to compute a 
+;                            pseudorandom number.
+;Arguments:      None
+;Return Values:  lfsr(R16) - the random number
+;Shared Variables: none
+;Local Variables: Feedback - the extra bit to aid in random number generation
+;Input:          None 
+;Output:         None
+;Error Handling: None
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  None
+;Critical Code:  None
+;Constants:      None
+;    
+;Random():
+;    Feedback = ((lfsr >> 4) ^ (lfsr >> 8)) AND 1
+;    lfsr = (lfsr << 1) | Feedback
+;    return lfsr
+;
+;______________________________________________________________________________
+;        
+;        
+;- NEED TO MAKE TIMER CALL THE BUTTON event handler
+;- NEED TIMER TO KEEP TRACK OF TIME LEFT
+;- USE GLEN'S DELAY16 AS DELAY
+
+TODO:
+;- USE  TIMER TO KEEP TRACK OF DISAPPEARANCES (decrement disappearance and wrap back, decrement disappearanceTime)
+;- NEED TIMER FOR SOUNDTOPLAY
+; Set TimerCounter to 0 in inittimer0
+; BUTTON_INTERRUPT <- 3 - call every 1 kHz
+;	MS_PER_SECOND <- 1000
+; set TimeLeftSeconds and TimeLeftMS
+; GRAVITY_INIT, SIZE_INIT, MAX_DISAPPEARANCE_TIME
+; WaitStartLEDs
+; GRAVITY_SETTING
+; TRUE/FALSE
+NUM_SETTINGS
+
+;

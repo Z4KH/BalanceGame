@@ -1,0 +1,2 @@
+@ECHO OFF
+"C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\avrasm2.exe" -S "U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\labels.tmp" -fI -W+ie -o "U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.hex" -d "U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.obj" -e "U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.eep" -m "U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.map" "U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm"
