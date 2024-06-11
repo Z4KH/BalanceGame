@@ -43,3 +43,4 @@
 .EQU    FALSE   =   0
 .EQU    MAX_DISAPPEARANCE_TIME  =   2
 .EQU    NUM_SETTINGS   =    6   ;the number of settings
+.EQU    DIS_FACTOR     =    31  ; so that max score is FF

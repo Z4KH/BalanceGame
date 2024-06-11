@@ -22,6 +22,7 @@
 .include    "SettingsConsts.inc"
 .include    "SoundIMUconsts.inc"
 .include    "timerDef.inc"
+.include    "DelayConsts.inc"
 
 
 .cseg
@@ -214,4 +215,5 @@ TopOfStack:     .BYTE   1               ;top of the stack
 .include "Transmit.asm"
 .include "WaitStart.asm"
 .include "Random.asm"
-.include "HW2.asm"
+.include "PlayGame.asm"
+.include "EndGame.asm"

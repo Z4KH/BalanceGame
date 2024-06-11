@@ -433,9 +433,13 @@ RunGame:
     LDI R17,    TRUE
     CALL    DisplayGameLED
     CALL    PlayGame
-    RET
-
-PlayGame:
+    
+    ; do not allow any presses that occured while playing to affect consts
+    CALL    StartPress
+    CALL    ModePress
+    CALL    RotCCW
+    CALL    RotCW
+    CALL    RotPress
     RET
 
 

@@ -20,9 +20,7 @@
 .EQU    INITCCW      = 0b11100001    ; full CCW rotation starting with 01
 
 ; Timer consts
-.EQU    MS_PER_CS   =   10
-.EQU    CS_PER_SECOND   =   100 
-.EQU    DEBOUNCE_TIME   =   20
+.EQU    DEBOUNCE_TIME   =   30
 
 ; button consts
 .EQU INIT_BUTTONS_STATE = 0xC0 ; Set initial rotary encoder state as 11, all other vars to 0

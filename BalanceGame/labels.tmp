@@ -13,6 +13,7 @@
   <FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\SettingsConsts.inc</FILE>
   <FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\SoundIMUconsts.inc</FILE>
   <FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\timerDef.inc</FILE>
+  <FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\DelayConsts.inc</FILE>
   <FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\ButtonEventHandler.asm</FILE>
   <FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Delay.asm</FILE>
   <FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\displayinit.asm</FILE>
@@ -31,7 +32,8 @@
   <FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Transmit.asm</FILE>
   <FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE>
   <FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Random.asm</FILE>
-  <FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\HW2.asm</FILE>
+  <FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE>
+  <FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\EndGame.asm</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
   <FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.obj</FILE>
@@ -43,25 +45,25 @@
   <FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.map</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <Start><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>103</LINE></Start>
+  <Start><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>104</LINE></Start>
   <Timer0EventHandler><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>17</LINE></Timer0EventHandler>
-  <TopOfStack><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>194</LINE></TopOfStack>
+  <TopOfStack><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>195</LINE></TopOfStack>
   <InitButtons><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\InitButtons.asm</FILE><LINE>39</LINE></InitButtons>
   <InitDisplay><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\displayinit.asm</FILE><LINE>30</LINE></InitDisplay>
   <InitTimer0><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\timerinit.asm</FILE><LINE>30</LINE></InitTimer0>
   <InitSoundIMU><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\InitSoundIMU.asm</FILE><LINE>44</LINE></InitSoundIMU>
-  <InitSettings><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>160</LINE></InitSettings>
-  <BalanceGame><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>114</LINE></BalanceGame>
+  <InitSettings><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>161</LINE></InitSettings>
+  <BalanceGame><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>115</LINE></BalanceGame>
   <WaitStart><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>98</LINE></WaitStart>
-  <Gravity><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>184</LINE></Gravity>
-  <Size><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>185</LINE></Size>
-  <DisappearanceRate><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>186</LINE></DisappearanceRate>
-  <RandomMode><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>189</LINE></RandomMode>
-  <Music><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>188</LINE></Music>
+  <Gravity><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>185</LINE></Gravity>
+  <Size><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>186</LINE></Size>
+  <DisappearanceRate><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>187</LINE></DisappearanceRate>
+  <RandomMode><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>190</LINE></RandomMode>
+  <Music><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>189</LINE></Music>
   <Random><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Random.asm</FILE><LINE>1</LINE></Random>
-  <Div16><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Div16.asm</FILE><LINE>43</LINE></Div16>
-  <DisappearanceTime><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>190</LINE></DisappearanceTime>
-  <HighScore><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>187</LINE></HighScore>
+  <Div16><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Div16.asm</FILE><LINE>64</LINE></Div16>
+  <DisappearanceTime><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>191</LINE></DisappearanceTime>
+  <HighScore><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\BalanceGame.asm</FILE><LINE>188</LINE></HighScore>
   <ButtonEventHandler><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\ButtonEventHandler.asm</FILE><LINE>51</LINE></ButtonEventHandler>
   <CheckRotSwitchFunc><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\ButtonEventHandler.asm</FILE><LINE>62</LINE></CheckRotSwitchFunc>
   <DebounceRot><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\ButtonEventHandler.asm</FILE><LINE>100</LINE></DebounceRot>
@@ -134,9 +136,16 @@
   <DisplayMisc><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\DisplayProcedures.asm</FILE><LINE>303</LINE></DisplayMisc>
   <DisplayChar><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\DisplayProcedures.asm</FILE><LINE>329</LINE></DisplayChar>
   <ExitDisplayChar><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\DisplayProcedures.asm</FILE><LINE>341</LINE></ExitDisplayChar>
-  <Div16Loop><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Div16.asm</FILE><LINE>48</LINE></Div16Loop>
-  <Div16SkipSub><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Div16.asm</FILE><LINE>58</LINE></Div16SkipSub>
-  <EndDiv16><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Div16.asm</FILE><LINE>67</LINE></EndDiv16>
+  <BlinkDisplay><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\DisplayProcedures.asm</FILE><LINE>354</LINE></BlinkDisplay>
+  <BlinkOff><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\DisplayProcedures.asm</FILE><LINE>357</LINE></BlinkOff>
+  <ExitBlinkDisplay><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\DisplayProcedures.asm</FILE><LINE>373</LINE></ExitBlinkDisplay>
+  <Div16Loop><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Div16.asm</FILE><LINE>69</LINE></Div16Loop>
+  <Div16SkipSub><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Div16.asm</FILE><LINE>79</LINE></Div16SkipSub>
+  <EndDiv16><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Div16.asm</FILE><LINE>88</LINE></EndDiv16>
+  <Div16by8><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Div16.asm</FILE><LINE>134</LINE></Div16by8>
+  <Div16by8Loop><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Div16.asm</FILE><LINE>138</LINE></Div16by8Loop>
+  <Div16by8SkipSub><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Div16.asm</FILE><LINE>145</LINE></Div16by8SkipSub>
+  <EndDiv16by8><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Div16.asm</FILE><LINE>154</LINE></EndDiv16by8>
   <GetAccelX><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\GetAccel.asm</FILE><LINE>49</LINE></GetAccelX>
   <RecieveIMU><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Recieve.asm</FILE><LINE>42</LINE></RecieveIMU>
   <GetAccelY><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\GetAccel.asm</FILE><LINE>85</LINE></GetAccelY>
@@ -159,29 +168,30 @@
   <StartPress><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\SwitchStatusFuncs.asm</FILE><LINE>107</LINE></StartPress>
   <RotCCW><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\SwitchStatusFuncs.asm</FILE><LINE>143</LINE></RotCCW>
   <RotCW><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\SwitchStatusFuncs.asm</FILE><LINE>180</LINE></RotCW>
-  <TimerCounter><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>74</LINE></TimerCounter>
-  <ExitEventHandler><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>59</LINE></ExitEventHandler>
-  <HandleTime><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>34</LINE></HandleTime>
-  <TimeLeftMS><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>77</LINE></TimeLeftMS>
-  <DecrementTimeLeftMS><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>54</LINE></DecrementTimeLeftMS>
-  <TimeLeftCS><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>78</LINE></TimeLeftCS>
-  <DecrementCS><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>51</LINE></DecrementCS>
-  <TimeLeftSeconds><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>76</LINE></TimeLeftSeconds>
-  <PlaySound><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>57</LINE></PlaySound>
+  <TimerCounter><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>84</LINE></TimerCounter>
+  <ExitEventHandler><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>68</LINE></ExitEventHandler>
+  <HandleTime><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>35</LINE></HandleTime>
+  <TimeLeftCS><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>88</LINE></TimeLeftCS>
+  <DecrementCS><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>63</LINE></DecrementCS>
+  <MoveBall><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>557</LINE></MoveBall>
+  <TimeLeftDS><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>87</LINE></TimeLeftDS>
+  <DecrementDS><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>60</LINE></DecrementDS>
+  <TimeLeftSeconds><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>86</LINE></TimeLeftSeconds>
+  <PlaySound><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Timer0EventHandler.asm</FILE><LINE>66</LINE></PlaySound>
   <InitTimerVars><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\timerinit.asm</FILE><LINE>41</LINE></InitTimerVars>
   <ExitInitTimer0><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\timerinit.asm</FILE><LINE>45</LINE></ExitInitTimer0>
   <WaitTransmit><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Transmit.asm</FILE><LINE>81</LINE></WaitTransmit>
   <TransmitComplete><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\Transmit.asm</FILE><LINE>84</LINE></TransmitComplete>
-  <WaitStartLEDs><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>473</LINE></WaitStartLEDs>
+  <WaitStartLEDs><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>477</LINE></WaitStartLEDs>
   <WaitStartLoop><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>104</LINE></WaitStartLoop>
-  <EndWaitStartLEDs><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>513</LINE></EndWaitStartLEDs>
+  <EndWaitStartLEDs><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>517</LINE></EndWaitStartLEDs>
   <HandleSettings><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>122</LINE></HandleSettings>
   <GravitySettingSelected><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>145</LINE></GravitySettingSelected>
   <ChangeSetting><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>139</LINE></ChangeSetting>
   <NotGravitySettingSelected><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>193</LINE></NotGravitySettingSelected>
-  <HexDecimal><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>520</LINE></HexDecimal>
+  <HexDecimal><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>524</LINE></HexDecimal>
   <GetGfromTable><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>160</LINE></GetGfromTable>
-  <CheckRotations><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>445</LINE></CheckRotations>
+  <CheckRotations><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>449</LINE></CheckRotations>
   <CheckStartPressed><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>407</LINE></CheckStartPressed>
   <NotSizeSettingSelected><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>237</LINE></NotSizeSettingSelected>
   <GetSfromTable><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>208</LINE></GetSfromTable>
@@ -201,19 +211,48 @@
   <StoreMusic><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>402</LINE></StoreMusic>
   <GameStart><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>424</LINE></GameStart>
   <RunGame><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>430</LINE></RunGame>
-  <PlayGame><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>438</LINE></PlayGame>
-  <CheckCW><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>454</LINE></CheckCW>
-  <ExitCheckRotations><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>467</LINE></ExitCheckRotations>
-  <CheckRotPress><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>462</LINE></CheckRotPress>
-  <SwitchTest><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\HW2.asm</FILE><LINE>99</LINE></SwitchTest>
-  <SwitchTestLoop><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\HW2.asm</FILE><LINE>104</LINE></SwitchTestLoop>
-  <CheckRotPresstest><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\HW2.asm</FILE><LINE>106</LINE></CheckRotPresstest>
-  <CheckModeSwitchtest><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\HW2.asm</FILE><LINE>126</LINE></CheckModeSwitchtest>
-  <StoreBuff><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\HW2.asm</FILE><LINE>249</LINE></StoreBuff>
-  <CheckStartSwitchtest><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\HW2.asm</FILE><LINE>146</LINE></CheckStartSwitchtest>
-  <CheckRotCCWtest><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\HW2.asm</FILE><LINE>167</LINE></CheckRotCCWtest>
-  <CheckRotCWtest><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\HW2.asm</FILE><LINE>187</LINE></CheckRotCWtest>
-  <DoneCheckSw><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\HW2.asm</FILE><LINE>207</LINE></DoneCheckSw>
-  <KeyBuf><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\HW2.asm</FILE><LINE>275</LINE></KeyBuf>
+  <PlayGame><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>77</LINE></PlayGame>
+  <CheckCW><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>458</LINE></CheckCW>
+  <ExitCheckRotations><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>471</LINE></ExitCheckRotations>
+  <CheckRotPress><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\WaitStart.asm</FILE><LINE>466</LINE></CheckRotPress>
+  <BallLocation><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>547</LINE></BallLocation>
+  <BallLeft><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>548</LINE></BallLeft>
+  <BallRight><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>549</LINE></BallRight>
+  <Disappearance><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>553</LINE></Disappearance>
+  <WinState><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>551</LINE></WinState>
+  <DeltaRemainder><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>555</LINE></DeltaRemainder>
+  <GameLoop><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>199</LINE></GameLoop>
+  <NeedMoveBall><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>208</LINE></NeedMoveBall>
+  <CheckRestartGame><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>322</LINE></CheckRestartGame>
+  <DisplayBall><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>483</LINE></DisplayBall>
+  <GetDeltaBall><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>374</LINE></GetDeltaBall>
+  <BallOnRight><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>237</LINE></BallOnRight>
+  <GameLose><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\EndGame.asm</FILE><LINE>56</LINE></GameLose>
+  <ExitGameLoop><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>335</LINE></ExitGameLoop>
+  <BallOnBoard><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>245</LINE></BallOnBoard>
+  <WinState1><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>281</LINE></WinState1>
+  <CheckLeftSide><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>270</LINE></CheckLeftSide>
+  <Side><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>559</LINE></Side>
+  <IncWinState><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>317</LINE></IncWinState>
+  <LeftSideAchieved><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>276</LINE></LeftSideAchieved>
+  <FinalWinState><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>304</LINE></FinalWinState>
+  <NeedLeftSide><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>298</LINE></NeedLeftSide>
+  <GameWin><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\EndGame.asm</FILE><LINE>122</LINE></GameWin>
+  <CheckStartPressedDuringGame><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>329</LINE></CheckStartPressedDuringGame>
+  <DeltaTable><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>517</LINE></DeltaTable>
+  <CompareDelta><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>386</LINE></CompareDelta>
+  <HaveDelta><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>394</LINE></HaveDelta>
+  <AddDeltaRemainder><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>414</LINE></AddDeltaRemainder>
+  <StoreRemainder><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>422</LINE></StoreRemainder>
+  <DetermineDeltaOverflow><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>416</LINE></DetermineDeltaOverflow>
+  <ExitGetDeltaBall><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>429</LINE></ExitGetDeltaBall>
+  <HaveBallLEDs><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>491</LINE></HaveBallLEDs>
+  <DisplayBallLED><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>493</LINE></DisplayBallLED>
+  <ExitDisplayBall><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\PlayGame.asm</FILE><LINE>507</LINE></ExitDisplayBall>
+  <ComputeScore><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\EndGame.asm</FILE><LINE>177</LINE></ComputeScore>
+  <NewHighScore><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\EndGame.asm</FILE><LINE>147</LINE></NewHighScore>
+  <ExitGameWin><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\EndGame.asm</FILE><LINE>168</LINE></ExitGameWin>
+  <ComputeDisappearanceFactor><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\EndGame.asm</FILE><LINE>198</LINE></ComputeDisappearanceFactor>
+  <ExitComputeScore><FILE>U:\Zach Pestrikov\ee10b\BalanceGame\BalanceGame\EndGame.asm</FILE><LINE>207</LINE></ExitComputeScore>
  </LABELS>
 </ASSEMBLER_INFO>

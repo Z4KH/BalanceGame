@@ -344,5 +344,34 @@ ExitDisplayChar:
     POP YL
     POP R20
     RET
+
+;__________________________________________________________________________________
+
+;assumes that buffer is already loaded
+; delay passed into R16
+; rounds passed into R17
+
+BlinkDisplay:
+    PUSH    R19
+    MOV     R20,    R16
+BlinkOff:
+    CLR R19
+    CLI
+    OUT PORTC,  R19 ; turn off the display
+    CALL    Delay16 ; and wait
+
+    MOV     R16,    R20
+    SEI             ; display turns on with interrupts
+    CALL    Delay16 ; wait
+    MOV     R16,    R20
+
+    CPI R17,    0   ; check if done
+    BREQ    ExitBlinkDisplay
+    DEC R17
+    JMP BlinkOff
+
+ExitBlinkDisplay:
+    POP R19
+    RET
 	
 	
