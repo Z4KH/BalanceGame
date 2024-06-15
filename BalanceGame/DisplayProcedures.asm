@@ -298,7 +298,43 @@ ExitDisplayGameLED:
 
 ;___________________________________________________________________________________
 
-; misc passed in r16
+;Procedure: DisplayMisc(miscSeg)
+;Description:    This Procedure displays miscellanious features to the 7-segment display.
+;Operational Description:  The procedure stores encoded miscellanious symbols(colons and decimals)
+                            ; and stores them in the buffer. This function is for symbols that 
+                            ; cannot be displayed on the digits.
+;Arguments:      miscSeg(R16) - the encoded segment
+;Return Values:  None
+;Shared Variables: displayBuffer - contains the state to write to each group of LEDs, set to all 0's
+					; Buffer Structure: (bottom to top)
+						;ledBar0		(leftmost bar of LEDs)	Select Lines: A=1,D=0
+						;ledBar1		Select Lines: A=2,D=0
+						;ledBar2		Select Lines: A=4,D=0
+						;ledBar3		Select Lines: A=8,D=0
+						;ledBar4		Select Lines: A=16,D=0
+						;ledBar5		Select Lines: A=32,D=0
+						;ledBar6		Select Lines: A=64,D=0
+						;ledBar8		(rightmost bar of LEDs & Start/Stop)	Select Lines: A=0,D=1
+						;ledBar7		Select Lines: A=0,D=2
+						;7segMisc		(colons, decomals, etc.) Select Lines: A=0,D=4
+						;Digit0			(rightmost digit) 	Select Lines: A=0,D=8
+						;Digit1			Select Lines: A=0,D=16
+						;Digit2 		Select Lines: A=0,D=32
+						;Digit3			(leftmost digit) 	Select Lines: A=0,D=64
+;Local Variables:  Pointer to buffer
+;Input:          None
+;Output:        None
+;Error Handling: None
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  None
+;Critical Code:  None. Only changing one byte of shared variable
+;Constants: MISC_GROUP_OFFSET - offset to the 7segMisc group in the buffer
+;Registers Changed:
+;	- R16, R20, Y
+;
 
 DisplayMisc:
     ; save REGISTERS
@@ -324,8 +360,30 @@ DisplayMisc:
 
 ;__________________________________________________________________________________
 
-;R16 - the character's segments
-;R17 - the digit to display it on [3,2,1,0]
+;Procedure: DisplayChar
+;Description:    This Procedure displays custom characters to the LED.
+;Operational Description:  The procedure is passed the segments to display and the digit to display
+;                           them on.
+                            .
+;Arguments:      segs(R16) - the character segments
+;                digit(R17) - the display digit the display segs on
+;Return Values:  None
+;Shared Variables: displayBuffer - contains the state to write to each group of LEDs, set to all 0's
+;Local Variables:  - pointer to the buffer
+;Input:          None
+;Output:        None
+;Error Handling: None
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  None
+;Critical Code:  None
+;Constants: DIGITS_OFFSET - offset to the digits in the buffer
+;Registers Changed:
+;	- R16, R20, Y
+;
+
 DisplayChar:
     PUSH R20
     PUSH    YL
@@ -347,9 +405,31 @@ ExitDisplayChar:
 
 ;__________________________________________________________________________________
 
-;assumes that buffer is already loaded
-; delay passed into R16
-; rounds passed into R17
+;Procedure: BlinkDisplay
+;Description:    This Procedure blinks the display for a given amount of time.
+;Operational Description:  The procedure is turns off and on the display each for
+;                           a given amount of time, and does that for a given
+;                           number of rounds. Therefore, it is also used to 
+;                           delay execution of code.
+                            .
+;Arguments:      delay(R16) - the amount of time that the display is on for or off for
+;                rounds(R17) - the number of times to blink the display
+;Return Values:  None
+;Shared Variables: None
+;Local Variables:  - pointer to the buffer
+;Input:          None
+;Output:        Gameboard Display
+;Error Handling: None
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  The procedure assumes that the buffer is already loaded.
+;Critical Code:  None
+;Constants: None
+;Registers Changed:
+;	- R19, R20, R17
+;
 
 BlinkDisplay:
     PUSH    R19

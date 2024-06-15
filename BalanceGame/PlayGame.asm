@@ -55,24 +55,6 @@
 ;               PLAY_GAME_DELAY - the delay called when the game begins
 ;Registers Changed: TBD
 ;    
-;PlayGame():
-;    Delay(0.5s)
-;    if (music):
-;        SoundToPlay = GAMEPLAYSOUND
-;    else:
-;        SoundToPlay = NO_SOUND
-;    ballLocation = BOARD_MIDDLE + (settings[size] - 1) / 2
-;    ballLeft = ballLocation - (settings[size] - 1) / 2
-;    ballRight = ballLocation + (settings[size] - 1) / 2
-;    winState = 0
-;    ClearDisplay()
-;    timeLeft = GAMETIME
-;    disappearance = disappearanceRate
-;    while (!StartPress() and TimeLeft):
-;        GameLoop()
-;    if (timeLeft == 0):
-;        GameLose()
-;    return
 
 PlayGame:
 ;TODO: MUSIC
@@ -160,42 +142,6 @@ PlayGame:
 ;                LEDsLEFT - the leftmost led of the game board
 ;                LEDsRIGHT - the rightmost led of the game board
 ;
-;GameLoop():
-;    yAccel = GetAccelY()
-;    zAccel = GetAccelz()
-;    if (zAccel < MAXZ_ACCEL):
-;        GameLose()
-;    else:
-;        if (randomMode):
-;            settings[size] = Random() % (sizeRangeHigh + 1)
-;            settings[gravity] = Random() % (gravityRangeHigh + 1)
-;        deltaBall = GetDeltaBall(yAccel)
-;        prevBall = [ballLeft..ballRight]
-;        ballLocation += deltaBall
-;        ballLeft += deltaBall
-;        ballRight += deltaBall
-;        if (ballLocation > 70 or ballLocation < 0):
-;            GameLose()
-;        else:
-;            DisplayBall(disappearance, prevBall)
-;            if (winState == 0):
-;                if (ballLeft == LEDsLEFT):
-;                    winState++
-;                    side = LEDsLEFT
-;                    BlinkDisplay('1')
-;                elif (ballRight == LEDsRIGHT):
-;                    winState++
-;                    side = LEDsRight
-;                    BlinkDisplay('1')
-;            elif (winState == 1):
-;                if (ballLeft == side or ballRight == side):
-;                    winState++
-;                    BlinkDisplay('2')
-;            else:
-;                if (ballLocation == LEDsMIDDLE):
-;                    GameWin()
-;    displayHex(TimeLeftSeconds)
-;    return
 GameLoop:
     
     ;dont move ball every time
@@ -318,7 +264,7 @@ IncWinState:
     INC     R16
     STS     WinState,   R16
 
-;TODO  handle errors at the end
+
 CheckRestartGame:
     ;display time left & ensure it hasnt run out
     LDS R16,    TimeLeftSeconds
@@ -362,14 +308,6 @@ ExitGameLoop:
 ;Registers Changed:
 ;    R16, R17, R19, R20, R21
 ;
-;GetDeltaBall(yAccel):
-;    sign = yAccel[15]
-;    for (int i = 0; i < DELTA_TABLE_LENGTH; i+=2):
-;        if !(DELTA_TABLE[i] > yAccel[14..0]):
-;            delta = DELTA_TABLE[i+1] * gravity
-;    if (sign == 1):
-;        delta *= -1
-;    return delta
 
 GetDeltaBall:
         PUSH    R16; SAVE REGISTERS
@@ -466,19 +404,8 @@ ExitGetDeltaBall:
 ;Critical Code:  None
 ;Constants:      MAX_DISAPPEARANCE_TIME - the maximum amount of time that the 
 ;                    ball can disappear for
+;               BOARD_RIGHT/BOARD_LEFT - the rightmost and leftmost LED's
 ;        
-;DisplayBall(disappearance, state):
-;	get the positions
-;	turn to state
-;    for i in prevBall:
-;        DisplayGameLED(i, Off)
-;    if (disappearance > 0 && disappearanceTime <= 0) or disappearanceRate == 0:
-;        for (int i = ballLeft; i < ballRight + 1; i++):
-;            DisplayGameLED(i, On)
-;    else if (disappearance <= 0 and disappearanceTime <= 0):
-;        disappearance = disappearanceRate
-;        disappearanceTime = Random() % MAX_DISAPPEARANCE_TIME
-;    return
 
 DisplayBall:
     LDS R20,    BallLeft    ; get the limits

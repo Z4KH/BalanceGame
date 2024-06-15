@@ -11,6 +11,15 @@
 ; Revision History
 ;   06/09/2024  Zachary Pestrikov   Wrote Initial Draft of File
 
+;NOTE TO GRADERS:
+    ;- I did not have time to implement some of the settings that I wanted to 
+    ;   (RandomMode, Disappearance, and GameSound), so these can be seen 
+    ;   throughout the code; however, they did not end of having any functionality.
+    ;   I left them in because I might implement them later for fun.
+    ;- I also did not get a chance to make the edits to my code that you guys wrote 
+    ;   on my past assignments, so the code for thedisplay functions and switch functions is
+    ;   still the same as when I submitted. However, I did write extra procedures for the display.
+
 ;_______________________________________________________________________________
 
 ; include device definitions

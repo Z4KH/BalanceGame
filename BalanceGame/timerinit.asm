@@ -8,7 +8,7 @@
 ;________________________________________________________________________________
 
 ;Procedure: InitTimer0
-;Description:    This Procedure initializes the timer to 3.9ms interrupts. 
+;Description:    This Procedure initializes the timer to 3.9ms interrupts(so that the display doesn't blink). 
 ;Operational Description:    The procedure initializes timer0.
 ;Arguments:      None
 ;Return Values:  None

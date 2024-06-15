@@ -257,6 +257,8 @@ NotSizeSettingSelected:
     JMP     CheckStartPressed
 
 NotHsSettingSelected:
+LDI R19, GRAVITY_IDX ; OTHER SETTINGS REMOVED FOR NOW
+jmp CheckStartPressed
     CPI     R19, DISAPPEARANCE_IDX
     BRNE    NotDisappearanceSelected
     
@@ -444,6 +446,32 @@ RunGame:
 
 
 ;______________________________________________________________________________
+
+;Procedure: CheckRotations()
+;Description: This Procedure is handles checking if the user changed the settings. 
+;Operational Description: This procedure checks each switch for changes and updates
+;                           the variable that its passed bassed on the rotations of the
+;                           rotary encoder.
+;Arguments:      step_size  -  te size to change the variable by
+                ;range_low/range_high - the lower and upper limits for the variable
+                ;init_value - the default value for the variable
+;Return Values:  r25 - the final result of the variable
+;               r24 -   whether the variable was changed or not
+;Shared Variables: None
+;                    
+;Local Variables: None
+;Input:          None 
+;Output:         None
+;Error Handling: None
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     None
+;Special Notes:  None
+;Critical Code:  None
+;Constants:      TRUE/FALSE - boolean representations
+;Registers Changed: R24,    R25,
+;        
 
 
 CheckRotations:

@@ -8,9 +8,35 @@
 ;   R16, R17, R19, R20
 
 ; Revision History:
-;   06/09/2024  Zachary Pestrikov   Drafted File
+;   06/09/2024  Zachary Pestrikov   Wrote File
 
 ;________________________________________________________________________________
+
+;Procedure: Timer0EventHandler()
+;Description: This Procedure is the main interrupt procedure for the timer 0 interrupts. 
+;Operational Description: This procedure handles calling the led muxer and the button
+;                           debouncer. It also keeps track of time.
+;Arguments:      None
+;Return Values:  None
+;Shared Variables: 
+;                    TimeLeftSeconds - the time left in seconds
+;                       MoveBall - signifies to move the ball
+;                    
+;Local Variables: None
+;Input:          None 
+;Output:         7-seg Display, game LEDs
+;Error Handling: None
+;Algorithms:     None
+;Data Structures: None
+;Limitations:    None
+;Known Bugs:     The time is a bit fast
+;Special Notes:  None
+;Critical Code:  None
+;Constants:      TIME_INTERRUPT - time to divide the timer to keep track of time
+;Registers Changed: R16, R17, R20
+;Functions Called:
+;   MultiplexDisplay, ButtonEventHandler
+;        
 
 .cseg
 

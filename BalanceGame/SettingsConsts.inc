@@ -21,7 +21,7 @@
 .EQU    DISAPPEARANCE_RANGE_HIGH    =   4   ; 4s
 
 ; Settings lower bounds
-.EQU    GRAVITY_RANGE_LOW   =   1   ;   0.1g
+.EQU    GRAVITY_RANGE_LOW   =   5   ;   0.5g
 .EQU    SIZE_RANGE_LOW  =   1   ; ball can take up >= 1 led
 .EQU    DISAPPEARANCE_RANGE_LOW =   0
 

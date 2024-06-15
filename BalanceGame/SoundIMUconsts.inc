@@ -45,3 +45,9 @@
 .EQU    ACCEL_YOUT_L    =   62    ; Y-axis accel low register addr
 .EQU    ACCEL_ZOUT_H    =   63    ; Z-axis accel high register addr
 .EQU    ACCEL_ZOUT_L    =   64    ; Z-axis accel low register addr
+
+; END GAME FREQUENCIES
+.EQU    WIN_SOUND_LOW   =   0xD0
+.EQU    WIN_SOUND_HIGH  =   0x07
+.EQU    LOSE_SOUND_LOW  =   0xF4
+.EQU    LOSE_SOUND_HIGH =   0x01

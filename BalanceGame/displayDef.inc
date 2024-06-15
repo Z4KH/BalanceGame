@@ -4,7 +4,7 @@
 ; Revision History
 ;	- 05/18/2024	Zachary Pestrikov	Wrote File
 ;   - 06/9/2024     Zachary Pestrikov   added button LED & misc group
-;   - 06/10/2024    Zachary Pestrikov   Added led bar consts
+;   - 06/10/2024    Zachary Pestrikov   Added led bar consts and other consts
 
 
 ; I/O Port Definitions

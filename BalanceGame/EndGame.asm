@@ -4,7 +4,6 @@
 ; Procedures Included:
 ;   GameLose()
 ;   GameWin()
-;   ComputeHS
 
 ; Registers Changed:
 
@@ -42,20 +41,16 @@
 ;Registers Changed: R16, R17
 ;        
 ;
-;GameLose():
-;    ClearDisplay()
-;    SoundToPlay = LOSESOUND
-;    BlinkDisplay('LOSE', BLINKTIME)
-;    TimeLeft = 0;
-;    SoundToPlay = NO_SOUND
-;    return
 
 
 .cseg
 
 GameLose:
     CALL    ClearDisplay
-;TODO sound stuff
+
+    LDI R16,    LOSE_SOUND_LOW  ; play lose sound
+    LDI R17,    LOSE_SOUND_HIGH
+    CALL    PlayNote
     
     LDI R17,    LOSE_HIGH
     LDI R16,    LOSE_LOW
@@ -73,7 +68,10 @@ GameLose:
     LDI R17,    END_BLINK_RDS
     CALL    BlinkDisplay
 
-;TODO SoundStuff
+    CLR R16         ; turn off sound
+    CLR R17
+    CALL   PlayNote
+     
     RET
 ;    
 ;______________________________________________________________________________
@@ -106,20 +104,13 @@ GameLose:
 ;                BLINKTIME - the amount of time to blink the display for
 ;                NO_SOUND - signals to the speaker not to play anything
 ;    
-;GameWin():
-;    ClearDisplay()
-;    score = ComputeScore()
-;    if (score > settings[highscore]):
-;        settings = score
-;        SoundToPlay = HIGHSCORE_SOUND
-;    else:
-;        SoundToPlay = VICTORY_SOUND
-;    BlinkDisplay(score, BLINKTIME)
-;    SoundToPlay = NO_SOUND
-;    timeLeft = 0
-;    return
 
 GameWin:
+
+    LDI R16,    WIN_SOUND_LOW  ; play lose sound
+    LDI R17,    WIN_SOUND_HIGH
+    CALL    PlayNote
+
 ; if new high score, then blink, else just display
     CALL    ComputeScore
     LDS     R17,    HighScore
@@ -166,6 +157,9 @@ NewHighScore:
     CALL    BlinkDisplay
 
 ExitGameWin:
+    CLR R16
+    CLR R17
+    CALL    PlayNote    ; turn off speaker
     RET
     
 
